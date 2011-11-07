@@ -2,6 +2,8 @@
 Compojure Cookies Example
 =========================
 
+Clojure, being a relatively new language uses an even newer web framework: [Compojure][1].
+
 ### Foo ###
 
 > This is a blockquote.
@@ -14,3 +16,4 @@ Compojure Cookies Example
     
 Otherwise `["this" "is" "code"]` har har.
 
+[1]: https://github.com/weavejester/compojure "Compojure"
