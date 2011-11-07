@@ -25,7 +25,7 @@ It's my goal to demonstrate the use of sessionless cookies in Compojure, with wo
                              8000 ; localhost or heroku?
                              (Integer/parseInt (System/getenv "PORT")))}) )
 ```
-### TODO Everything In Between ###
+### TODO: Everything In Between ###
 
 * routes, really the WHY about routes
 * mention use/only
@@ -72,7 +72,7 @@ It's my goal to demonstrate the use of sessionless cookies in Compojure, with wo
 
 ```
 
-[0]: https://github.com/heow/compojure-cookies-example/blob/master/src/example1.clj "Example 0"
+[0]: https://github.com/heow/compojure-cookies-example/blob/master/src/example0.clj "Example 0"
 [1]: https://github.com/weavejester/compojure "Compojure"
 [2]: http://github.com/mmcgrana/ring          "Ring"
 [3]: https://github.com/heow/compojure-cookies-example/blob/master/src/example1.clj "Example 1"
