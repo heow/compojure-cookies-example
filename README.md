@@ -32,7 +32,7 @@ After you check out the project, it's easy to see in action:
 
 ### TODO: Everything In Between ###
 
-* routes, really the WHY about routes
+* middleware, they're really features
 * mention use/only
 * point out Hiccup
 * infinite wisdom of keyword params
