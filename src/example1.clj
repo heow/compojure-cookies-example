@@ -1,6 +1,6 @@
 (ns example1
-  (:use [ring.adapter.jetty             :only [run-jetty]]
-        [compojure.core                 :only [defroutes GET]]))
+  (:use [ring.adapter.jetty :only [run-jetty]]
+        [compojure.core     :only [defroutes GET]]))
 
 (defroutes routes
   (GET  "/" [] "Hi there"))
