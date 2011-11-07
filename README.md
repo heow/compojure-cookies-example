@@ -25,6 +25,11 @@ It's my goal to demonstrate the use of sessionless cookies in Compojure, with wo
                              8000 ; localhost or heroku?
                              (Integer/parseInt (System/getenv "PORT")))}) )
 ```
+
+After you check out the project, it's easy to see in action:
+
+> $ lein run -m example1
+
 ### TODO: Everything In Between ###
 
 * routes, really the WHY about routes
