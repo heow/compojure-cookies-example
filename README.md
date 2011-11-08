@@ -4,13 +4,13 @@ Compojure Cookies Example 2011
 
 Clojure, being a relatively new language, uses an even newer web framework: [Compojure][1].  
 
-Compojure, still sporting a sub 1.0 version, being under active development and reduced to a thin veneer over [Ring][2] may prove challenging for developers.  If for any reason is because many examples and tutorials are simply outdated.
+Compojure, still sporting a sub 1.0 version, being under active development and reduced to a thin veneer over [Ring][2] may prove challenging for developers.  If for any reason because many examples and tutorials are just outdated.
 
-It's my goal to demonstrate the use of sessionless cookies in Compojure, with working examples.
+I'm going to demonstrate the use of sessionless cookies in Compojure, with working examples.
 
-### The Basics ###
+### The Bare Essentials ###
 
-[Example 1][3] is a simple hello-world application (suitable for running on [Heroku][4])
+[Example 1][3], a simple hello-world application is suitable for running on [Heroku][4]:
 
 ```clojure
 (ns example1
@@ -26,9 +26,40 @@ It's my goal to demonstrate the use of sessionless cookies in Compojure, with wo
                              (Integer/parseInt (System/getenv "PORT")))}) )
 ```
 
-After you check out the project, it's easy to see in action:
+After you check out the project from [GitHub][5], it's easy to see in action:
 
     $ lein run -m example1
+    
+### Middleware: A Morality Tale in I Act ###
+
+The addition of a very simple form requires some changes.
+
+```clojure
+(ns example2
+  (:use [ring.adapter.jetty             :only [run-jetty]]
+        [compojure.core                 :only [defroutes GET POST]]
+        [ring.middleware.params         :only [wrap-params]]))
+
+(defroutes routes
+  (POST "/" [name] (str "Thanks " name))
+  (GET  "/" [] "<form method='post' action='/'> What's your name? <input type='text' name='name' class='name' maxlength='10' /><input type='submit' name='submit' value='ok' /></form>"))
+
+(def app (-> #'routes wrap-params))
+
+(defn -main []
+  (run-jetty app {:port (if (nil? (System/getenv "PORT")) 
+                          8000 ; localhost or heroku?
+                          (Integer/parseInt (System/getenv "PORT")))}) )
+```
+
+The new POST route uses the `name` variable from the form.  This is possible because we're now leveraging middleware:
+
+    (def app (-> #'routes wrap-params))
+
+Simply put: _middleware is features_.  Rather than forcing you into a one-size-fits all model, it's a way to mix and match whichever features you need.
+
+In this case, we need to process form variables.  `wrap-params` is what does this for us by making the form variable `name` available as a local variable.
+
 
 ### TODO: Everything In Between ###
 
@@ -82,3 +113,4 @@ After you check out the project, it's easy to see in action:
 [2]: http://github.com/mmcgrana/ring          "Ring"
 [3]: https://github.com/heow/compojure-cookies-example/blob/master/src/example1.clj "Example 1"
 [4]: http://devcenter.heroku.com/articles/clojure "Getting Started with Clojure on Heroku/Cedar"
+[5]: https://github.com/heow/compojure-cookies-example "GitHub Project"
