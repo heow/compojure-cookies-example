@@ -103,7 +103,7 @@ You can also look at from an efficiency point of view: *ALL* we're doing is acce
                           (Integer/parseInt (System/getenv "PORT")))}) )
 ```
 
-#### keyword params ####
+#### Keyword Params ####
 
 Starting from the bottom, we're now wrapping cookies and keyword params using [threading][8]:
 
@@ -114,7 +114,7 @@ Keyword params changes the input parameters from string-based to keyword based. 
     {"name" "Hello world"} ; params without keyword-params
     {:name  "Hello world"} ; params with keyword-params
     
-#### destructuring syntax ####
+#### Destructuring Syntax ####
     
 The routes have a [startling new syntax][9]:
 
@@ -122,7 +122,7 @@ The routes have a [startling new syntax][9]:
 
 It's because now that we want to manipulate cookies, we're a operating at slightly lower level which allows us to pass in the cookies so they can be read.
 
-#### the return value ####
+#### Return Value ####
 
     {:cookies {"name" name}
      :body (str "<html><head> ...
