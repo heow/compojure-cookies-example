@@ -114,7 +114,7 @@ Keyword params changes the input parameters from string-based to keyword based. 
     {"name" "Hello world"} ; params without keyword-params
     {:name  "Hello world"} ; params with keyword-params
     
-#### destructuring syntax #### 
+#### destructuring syntax ####
     
 The routes have a [startling new syntax][9]:
 
