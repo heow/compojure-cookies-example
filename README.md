@@ -120,7 +120,7 @@ The routes have a [startling new syntax][9]:
 
     (POST "/" {params :params cookies :cookies} (process-form params cookies))
 
-It's because now that we want to manipulate cookies, we're a operating at slightly lower level which allows us to pass in the cookies so they can be read.
+Because we want to manipulate cookies we're a operating at slightly lower level which allows us to pass in the cookies so they can be read.
 
 #### Return Value ####
 
