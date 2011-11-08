@@ -42,7 +42,7 @@ The addition of a very simple form requires some changes.
 
 (defroutes routes
   (POST "/" [name] (str "Thanks " name))
-  (GET  "/" [] "<form method='post' action='/'> What's your name? <input type='text' name='name' /><input type='submit' name='submit' value='ok' /></form>"))
+  (GET  "/" [] "<form method='post' action='/'> What's your name? <input type='text' name='name' /><input type='submit' /></form>"))
 
 (def app (-> #'routes wrap-params))
 
