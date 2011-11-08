@@ -58,7 +58,7 @@ The new POST route uses the `name` variable from the form.  This is possible bec
 
     (def app (wrap-params routes))
 
-Simply put: __middleware is features__.  Rather than forcing you into a one-size-fits all model, it's a way to mix and match whichever features you need.
+Simply put: __middleware is features__.  Rather than forcing you into a one-size-fits all model, it's a way to mix and match whichever ones you need.
 
 In this case, we have to process form variables.  `wrap-params` is what does this for us by making the form variable `name` available as a local.
 
