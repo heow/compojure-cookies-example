@@ -8,7 +8,7 @@
 (defn main-page [cookies]
   (str "Hi there "
        (if (empty? (:value (cookies "name")))
-         "<form method='post' action='/'> What's your name? <input type='text' name='name' class='name' maxlength='10' /><input type='submit' name='submit' value='ok' /></form>"
+         "<form method='post' action='/'> What's your name? <input type='text' name='name' /><input type='submit' /></form>"
          (:value (cookies "name")))))
 
 (defn process-form [params cookies]
@@ -27,6 +27,6 @@
 (def app (-> #'routes wrap-cookies wrap-keyword-params wrap-params))
 
 (defn -main []
-  (run-jetty routes {:port (if (nil? (System/getenv "PORT")) 
-                             8000 ; localhost or heroku?
-                             (Integer/parseInt (System/getenv "PORT")))}) )
+  (run-jetty app {:port (if (nil? (System/getenv "PORT")) 
+                          8000 ; localhost or heroku?
+                          (Integer/parseInt (System/getenv "PORT")))}) )

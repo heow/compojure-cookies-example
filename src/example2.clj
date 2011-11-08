@@ -5,9 +5,9 @@
 
 (defroutes routes
   (POST "/" [name] (str "Thanks " name))
-  (GET  "/" [] "<form method='post' action='/'> What's your name? <input type='text' name='name' class='name' maxlength='10' /><input type='submit' name='submit' value='ok' /></form>"))
+  (GET  "/" [] "<form method='post' action='/'> What's your name? <input type='text' name='name' /><input type='submit' /></form>"))
 
-(def app (-> #'routes wrap-params))
+(def app (wrap-params routes))
 
 (defn -main []
   (run-jetty app {:port (if (nil? (System/getenv "PORT")) 
