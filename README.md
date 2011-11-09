@@ -8,7 +8,7 @@ Clojure, being a relatively new language, uses an even newer web framework: [Com
 
 Compojure, still sporting a sub 1.0 version, being under active development and reduced to a thin veneer over [Ring][2] may prove challenging for developers.  If for any reason because many examples and tutorials are just outdated.
 
-I'm going to demonstrate the use of sessionless cookies in Compojure, with working examples.
+I'm going to demonstrate the use of session-less cookies in Compojure, with working examples.
 
 ### The Bare Essentials ###
 
@@ -32,7 +32,7 @@ After you check out the project from [GitHub][5], it's easy to see in action:
 
     $ lein run -m example1
     
-### Middleware: A Morality Tale in I Act ###
+### Middleware is Features ###
 
 [Example 2][6], the addition of a very simple form requires some changes.
 
@@ -58,7 +58,7 @@ The new POST route uses the `name` variable from the form.  This is possible bec
 
     (def app (wrap-params routes))
 
-Simply put: __middleware is features__.  Rather than forcing you into a one-size-fits all model, it's a way to mix and match whichever ones you need.
+Simply put: *middleware is features*.  Rather than forcing you into a one-size-fits all model, it's a way to mix and match whichever ones you need.
 
 In this case, we have to process form variables.  `wrap-params` is what does this for us by making the form variable `name` available as a local.
 
@@ -109,28 +109,31 @@ Starting from the bottom, we're now wrapping cookies and keyword params using [t
 
     (def app (-> #'routes wrap-cookies wrap-keyword-params wrap-params))
 
-Keyword params changes the input parameters from string-based to keyword based.  It's string based because form variables technically can contain spaces, however I've yet to see it in real life.
+Keyword params change the input parameters from string-based to keyword based.  By default it's string based because form variables can contain spaces, however I've yet to see it in real life.
 
     {"name" "Hello world"} ; params without keyword-params
     {:name  "Hello world"} ; params with keyword-params
     
 #### Destructuring Syntax ####
     
-The routes have a [startling new syntax][9]:
+The routes have a [startling new destructing syntax][9]:
 
     (POST "/" {params :params cookies :cookies} (process-form params cookies))
 
-Because we want to manipulate cookies we're a operating at slightly lower level which allows us to pass in the cookies so they can be read.
+Because we want to manipulate cookies, we need to operate at slightly lower level of abstraction.   This syntax allow us to pass in cookies so they can be read.
 
 #### Return Value ####
 
     {:cookies {"name" name}
      :body (str "<html><head> ...
 
-Because we want to __modify__ the cookies, we need to return something more than a string.  By default returning a string assumes the `:body`, you can [set other various things][10] like headers etc.
+The return value isn't just a string anymore, in order to save a cookie in the browser we need to pass them out much in the manner it arrived.   Besides, returning a string is a shortcut for setting the `:body`, you also can [set other various things][10] like headers.
 
+### That's it ###
 
+This avoids the overhead and complexity  of sessions, meaning the cookie is stored __unencrypted and in plain view__ in the user's browser (for obvious reasons, avoid this technique for sensitive data).  Unlike sessions which store a token that is associated with your data in the web-server, the browser holds everything so the data survives server restarts but is readable and modifiable by the user.
 
+It's not a lot of code, you've learned alternative input and outputs, destructuring, form processing, Ring's middleware and cookie management.
 
 
 [1]: https://github.com/weavejester/compojure "Compojure"
