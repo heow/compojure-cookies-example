@@ -135,6 +135,10 @@ This avoids the overhead and complexity  of sessions, meaning the cookie is stor
 
 It's not a lot of code, you've learned alternative input and outputs, destructuring, form processing, Ring's middleware and cookie management.
 
+Now grab the code from GitHub:
+
+    git clone git://github.com/heow/compojure-cookies-example.git
+
 
 [1]: https://github.com/weavejester/compojure "Compojure"
 [2]: http://github.com/mmcgrana/ring          "Ring"
