@@ -8,7 +8,7 @@ Clojure, being a relatively new language, uses an even newer web framework: [Com
 
 Compojure, still sporting a sub 1.0 version, being under active development and reduced to a thin veneer over [Ring][2] may prove challenging for developers.  If for any reason because many examples and tutorials are just outdated.
 
-I'm going to demonstrate the use of session-less cookies in Compojure, with working examples.
+This demonstrate the use of session-less cookies in Compojure, with working examples.
 
 ### The Bare Essentials ###
 
