@@ -137,7 +137,7 @@ It's not a lot of code, you've learned alternative input and outputs, destructur
 
 Now grab the code from GitHub and make something fun:
 
-    git clone git://github.com/heow/compojure-cookies-example.git
+    git clone https://github.com/heow/compojure-cookies-example.git
 
 
 [1]: https://github.com/weavejester/compojure "Compojure"
