@@ -2,7 +2,7 @@
 Compojure Cookies Example 2011
 ==============================
 
-![cookie](http://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Cookie.gif/120px-Cookie.gif "")
+![cookie](http://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Chocolate_chip_cookies.jpg/250px-Chocolate_chip_cookies.jpg)
 
 Clojure, being a relatively new language, uses an even newer web framework: [Compojure][1].  
 
